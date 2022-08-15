@@ -113,7 +113,7 @@ body {
 .card {
   position: absolute;
   top: 0px;
-  left: 5.5rem;
+  left: 18%;
   background-image: url(./assets/background-card.jpg);
   width: 8.56cm;
   height: 5.398cm;
@@ -166,4 +166,44 @@ body {
   font-weight: 300;
   margin-left: 13rem;
   margin-top: -2.2rem;
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    width: 90vw;
+    height: 60vh;
+  }
+  .form {
+    padding: 50% 5% 0 5%;
+  }
+  .card {
+    top: 30px;
+    left: 8%;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .container {
+    width: 70vw;
+    height: 60vh;
+  }
+  .form {
+    padding: 30% 5% 0 5%;
+  }
+  .card {
+    top: 30px;
+    left: 27%;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .container {
+    width: 30vw;
+    height: 60vh;
+  }
+  .form {
+    padding: 45% 5% 0 5%;
+  }
+  .card {
+    top: 60px;
+    left: 20%;
+  }
 }

@@ -11,7 +11,13 @@ function App() {
 
   const handleNumberChange = (event) => {
     const limit = 16;
-    setNumber(event.target.value.slice(0, limit));
+    setNumber(
+      event.target.value
+        .replace(/[^\dA-Z]/g, " ")
+        .replace(/(.{4})/g, "$1 ")
+        .trim()
+        .slice(0, limit)
+    );
   };
   const handleNameChange = (event) => {
     setName(event.target.value.toUpperCase());
@@ -56,6 +62,8 @@ function App() {
               onChange={handleNumberChange}
               type="number"
               placeholder="#### #### #### ####"
+              autocomplete="off"
+              required
             />
           </div>
 
@@ -71,6 +79,8 @@ function App() {
               type="text"
               minLength="05"
               placeholder="Full Name"
+              autocomplete="off"
+              required
             />
           </div>
 
@@ -88,6 +98,8 @@ function App() {
                 min="01"
                 max="12"
                 placeholder="Month"
+                autocomplete="off"
+                required
               />
               <input
                 id="expiration"
@@ -98,6 +110,8 @@ function App() {
                 min="1900"
                 max="2099"
                 placeholder="Year"
+                autocomplete="off"
+                required
               />
             </div>
 
@@ -112,6 +126,8 @@ function App() {
                 onChange={handleCvvChange}
                 type="number"
                 placeholder="###"
+                autocomplete="off"
+                required
               />
             </div>
           </div>
