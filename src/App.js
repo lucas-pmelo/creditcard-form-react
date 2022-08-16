@@ -3,7 +3,7 @@ import { useState } from "react";
 import Chip from "./assets/chip.png";
 
 function App() {
-  const [number, setNumber] = useState("#### #### #### ####");
+  const [number, setNumber] = useState("");
   const [name, setName] = useState("");
   const [month, setMonth] = useState("MM");
   const [year, setYear] = useState("YYYY");
@@ -12,12 +12,8 @@ function App() {
   const handleNumberChange = (event) => {
     const limit = 16;
     setNumber(
-      event.target.value
-        .replace(/[^\dA-Z]/g, " ")
-        .replace(/(.{4})/g, "$1 ")
-        .trim()
-        .slice(0, limit)
-    );
+      event.target.value.replace(/[^\d]/g, "").replace(/(.{4})/g, "$1 ")
+    ).slice(0, limit);
   };
   const handleNameChange = (event) => {
     setName(event.target.value.toUpperCase());
@@ -39,7 +35,9 @@ function App() {
     <div className="App">
       <div className="card">
         <img className="chip-image" src={Chip} />
-        <h1 className="show-number">{number}</h1>
+        <h1 className="show-number">
+          {number.length > 0 ? `${number}` : "#### #### #### ####"}
+        </h1>
         <div className="show-name">
           {name.length > 0 ? `${name}` : "YOUR FULL NAME"}
         </div>
@@ -60,8 +58,10 @@ function App() {
               name="number"
               value={number}
               onChange={handleNumberChange}
-              type="number"
+              type="text"
               placeholder="#### #### #### ####"
+              maxLength={20}
+              pattern="[0-9]+"
               autocomplete="off"
               required
             />
